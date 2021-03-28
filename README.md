@@ -1,11 +1,6 @@
 
-<!DOCTYPE html>
-<html>
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hacker's guide to Neural Networks</title>
+    <title>House Price Pridiction</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Musings of a Computer Scientist.">
     <link rel="canonical" href="http://karpathy.github.io/neuralnets/">
