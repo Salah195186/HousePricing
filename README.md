@@ -1,142 +1,31 @@
-Creating Custom Templates for nbconvert
+Prediction of House Price Based on The Back Propagation Neural Network in The Keras Deep Learning Framework 
 =======================================
 
-Selecting a template
+Introduction
 --------------------
 
-Most exporters in nbconvert are subclasses of `TemplateExporter`, and make use of
-jinja to render notebooks into the destination format.
+House prices have been increasing in recent years, in tandem with the global economy's rapid growth. The real estate sector has gradually grown to become a significant pillar of the global economy. In this environment, nearly everybody is paying attention to the home market trend and attempting to use more empirical and effective approaches to make correct housing price forecasts. Aside from the effect of the house's characteristics, other factors, especially the characteristics of the parties to the sale, have an impact on the house's price. The house price dilemma can be seen as a large open complex system with a lot of complexity, volatility, nonlinearity, and dynamics.
 
-Alternative nbconvert templates can be selected by name from the command line with the
-``--template`` option. For example, to use the ``reveal`` template with the HTML exporter,
-one can type.
+This study uses the chain home network's housing data to forecast the price of used housing in Shanghai. To begin, this paper uses crawler technologies to decode the URL text information using the BeautifulSoup parser and the json request address. Then, using the Keras deep learning library, a multi-layer feedforward neural network model is equipped using the error inverse propagation algorithm. 
 
-.. sourcecode:: bash
 
-   jupyter nbconvert <path-to-notebook> --to html --template reveal
+The data used in this paper was crawled from the Web Host using crawler technology, and experiments were performed using a back propagation neural network (BP neural network) model based on the Keras paradigm. The BP neural network is a multilayer feedforward network that has been trained using the error inverse propagation algorithm. It's one of the most common neural network models out there. It can learn and store a huge number of input-output mode mappings without disclosing the mapping relationship's mathematical equations. Its learning rule is to use the gradient steepest descent approach to continuously change the network's weight and threshold through error back propagation until the network's square error reaches a minimum. For housing price forecasting, 12 variables influencing real estate are chosen; the selected indicators have different aspects such as geographic coordinates, traffic orientation, and housing type. The abnormal value was processed using random forest during the experiment, and a better prediction outcome was obtained as a result.
 
-Where are nbconvert templates installed?
+Keras
 ----------------------------------------
 
-Nbconvert templates are *directories* containing resources for nbconvert template
-exporters such as jinja templates and associated assets. They are installed in the
-**data directory** of nbconvert, namely ``<installation prefix>/share/jupyter/nbconvert``.
-Nbconvert includes several templates already.
-
-For example, three HTML templates are provided in nbconvert core for the HTML exporter:
-
- - ``lab`` (The default HTML template, which produces the same DOM structure as JupyterLab)
- - ``classic`` (The HTML template styled after the classic notebook)
- - ``reveal`` (For producing slideshows).
-
-.. note::
-
-    Running ``jupyter --paths`` will show all Jupyter directories and search paths.
-
-    For example, on Linux, ``jupyter --paths`` returns:
-
-    .. code::
-
-        $ jupyter --paths
-        config:
-            /home/<username>/.jupyter
-            /<sys-prefix>/etc/jupyter
-            /usr/local/etc/jupyter
-            /etc/jupyter
-        data:
-            /home/<username>/.local/share/jupyter
-            /<sys-prefix>/share/jupyter
-            /usr/local/share/jupyter
-            /usr/share/jupyter
-        runtime:
-            /home/<username>/.local/share/jupyter/runtime
+Keras is a Python-based neural network library with a high degree of modularity. The backend may be either TensorFlow or Theano [3]. Keras also includes modules such as activation function modules, sheet modules, preprocessing modules, objective function modules, optimization system selection modules, and so on. Activation function modules and optimization process selection modules [4] are two of them, and they combine all of the most recent and best optimization approaches and activation functions. Network models can be easily developed with these components, and core parameters of neural networks can be enhanced.
 
 
-Adding Additional Template Paths
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Back Propagation NN
+----------------------------------------
 
-In order to add additional paths to be searched, you need to pass ``TemplateExporter.extra_template_basedirs``
-config options indicating the extra directories to search for templates. Be careful not to override
-``TemplateExporter.template_paths`` unless you intend to replace ALL paths and don't want the default
-locations included.
+The BP NN [5] is a multi-layer feedforward NN trained by using the error back propagation algorithm suggested by the Mccelland  and Rumelhart in 1986. It typically consists of three layers: input, hidden, and output. Figure 1 depicts the network structure. 
 
-When using the commandline the extra template paths are added by calling
-``--TemplateExporter.extra_template_basedirs=path/you/want/included``.
+![image](https://user-images.githubusercontent.com/81248615/112743781-b1cf4180-8fb3-11eb-826e-f6ee2ec55182.png)
 
 
-The content of nbconvert templates
-----------------------------------
+Results
+--------------------
 
-conf.json
-~~~~~~~~~
-
-Nbconvert templates all include a ``conf.json`` file at the root of the directory,
-which is used to indicate
-
- - the base template that it is inheriting from.
- - the mimetypes of the template.
- - preprocessors classes to register in the exporter when using that template.
-
-Inspecting the configuration of the reveal template we see that it inherits from the lab
-template, exports text/html, and enables two preprocessors called "100-pygments" and "500-reveal".
-
-.. code::
-
-    {
-      "base_template": "lab",
-      "mimetypes": {
-        "text/html": true
-      },
-      "preprocessors": {
-        "100-pygments": {
-            "type": "nbconvert.preprocessors.CSSHTMLHeaderPreprocessor",
-            "enabled": true
-        },
-        "500-reveal": {
-          "type": "nbconvert.exporters.slides._RevealMetadataPreprocessor",
-          "enabled": true
-        }
-      }
-    }
-
-Inheritance
-~~~~~~~~~~~
-
-Nbconvert walks up the inheritance structure determined by ``conf.json`` and produces an agregated
-configuration, merging the dictionaries of registered preprocessors.
-The lexical ordering of the preprocessors by name determines the order in which they will be run.
-
-Besides the ``conf.json`` file, nbconvert templates most typically include jinja templates files,
-although any other resource from the base template can be overriden in the derived template.
-
-For example, inspecting the content of the ``classic`` template located in
-``share/jupyter/nbconvert/templates/classic``, we find the following content:
-
-.. code::
-
-    share/jupyter/nbconvert/templates/classic
-    ├── static
-    │   └── styles.css
-    ├── conf.json
-    ├── index.html.j2
-    └── base.html.j2
-
-The ``classic`` template exporter includes a ``index.html.j2`` jinja template (which is the main entry point
-for HTML exporters) as well as CSS and a base template file in ``base.html.j2``.
-
-.. note::
-
-   A template inheriting from ``classic`` would specify ``"base_template": "classic"`` and could
-   override any of these files. For example, one could make a "classiker" template merely providing
-   an alternative ``styles.css`` file.
-
-Inheritance in Jinja
-~~~~~~~~~~~~~~~~~~~~
-
-In nbconvert, jinja templates can inherrit from any other jinja template available in its current directory
-or base template directory by name. Jinja templates of other directories can be addressed by their relative path
-from the Jupyter data directory.
-
-For example, in the reveal template, ``index.html.j2`` extends ``base.html.j2`` which is in the same directory, and
-``base.html.j2`` extends ``lab/base.html.j2``. This approach allows using content that is available in other templates
-or may be overriden in the current template.
+The analysis with the absolute value of the relative error between the expected value and the real value is within 5%, accounting for 95.59 percent, according to the measurement and statistical result. The neural network built by other documents of the same type was applied to the data of this experiment for comparison in order to verify the validity of the experiment. The results of the studies indicate that the NN developed in this analysis are marginally better than previous neural networks and have good model performance.
