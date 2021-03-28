@@ -11,7 +11,7 @@
   <link rel="canonical" href="https://cs231n.github.io/">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/main.css">
 
   <!-- Google fonts -->
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
