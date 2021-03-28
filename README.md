@@ -24,3 +24,29 @@ The BP NN [3] is a multi-layer feedforward NN trained by using the error back pr
 # Results 
 
 The analysis with the absolute value of the relative error between the expected value and the real value is within 5%, accounting for 95.59 percent, according to the measurement and statistical result. The neural network built by other documents of the same type was applied to the data of this experiment for comparison in order to verify the validity of the experiment. The results of the studies indicate that the NN developed in this analysis are marginally better than previous neural networks and have good model performance.
+
+
+## Paper Analyzed for this blog
+   Z. Jiang and G. Shen, "Prediction of House Price Based on The Back Propagation Neural Network in The Keras Deep Learning Framework," 2019 6th International Conference on        Systems and Informatics (ICSAI), Shanghai, China, 2019, pp. 1408-1412, doi: 10.1109/ICSAI48974.2019.9010071.
+
+## Work Cited
+
+Ang L I , Yi-Xiang L I , Xue-Hui L I . TensorFlow and Keras-based Convolutional Neural Network in CAT Image Recognition. 2017.
+Wisanlaya Pornprakun, et al. Determining optimal policies for sugarcane harvesting in Thailand using bi-objective and quasi-Newton optimization methods. Advances in Difference Equations, 2019, Vol.2019 (1), pp.1-15
+Dayhoff J E, Deleo J M. Artificial neural networks. Cancer, 2001, 91(8):1615-1634. 
+
+# Our Trained Networks
+
+In this study, we’ve written Python code to:
+  •	 Explore and Process the Dataset
+  •	Build and Train our NN
+  •	Visualize  Accuracy and Loss
+  •	Add Regularization to NN
+We've been through a lot, but we haven't written too much code! It only took about 4 to 5 lines of code to construct and train our Neural Network, and playing with different model architectures is as easy as swapping in different layers or modifying different hyperparameters.
+
+We have trained three different networks and achieved an highest accuracy of 90.69%. Training and testing accuracy of our bestfitted model is shown in figure 2.
+
+![download](https://user-images.githubusercontent.com/81248615/112745201-0b3d6d80-8fc0-11eb-987d-0c2d6712a680.png)
+
+
+
