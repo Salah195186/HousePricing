@@ -18,6 +18,8 @@ Keras is a Python-based neural network library with a high degree of modularity.
 ### Back Propagation NN
 
 The BP NN [3] is a multi-layer feedforward NN trained by using the error back propagation algorithm suggested by the Mccelland  and Rumelhart in 1986. It typically consists of three layers: input, hidden, and output. Figure 1 depicts the network structure. 
+![image](https://user-images.githubusercontent.com/81248615/112744876-44c0a980-8fbd-11eb-9a1c-2d1ecd4c06ce.png)
+
 
 # Results 
 
