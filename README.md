@@ -33,7 +33,9 @@ The analysis with the absolute value of the relative error between the expected 
 
 Ang L I , Yi-Xiang L I , Xue-Hui L I . TensorFlow and Keras-based Convolutional Neural Network in CAT Image Recognition. 2017.
 
+
 Wisanlaya Pornprakun, et al. Determining optimal policies for sugarcane harvesting in Thailand using bi-objective and quasi-Newton optimization methods. Advances in Difference Equations, 2019, Vol.2019 (1), pp.1-15
+
 
 Dayhoff J E, Deleo J M. Artificial neural networks. Cancer, 2001, 91(8):1615-1634. 
 
